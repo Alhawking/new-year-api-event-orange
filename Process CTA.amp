@@ -15,7 +15,7 @@
     SET @tenantId = Field(@rowResult,'Tenant Id')
     SET @oldToken = Base64Decode(Field(@rowResult,'Token'),'UTF-8')
     SET @expirationDate = Field(@rowResult,'ExpirationDate')
-    SET @random = Random(1,100000)
+    SET @random = Random(@low,@high)
 ]%%
 <script runat="server">
     Platform.Load("Core","1.1.1");
