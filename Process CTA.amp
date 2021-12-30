@@ -32,7 +32,7 @@
         var email = Variable.GetValue("@email");
         var journeyEmail = Variable.GetValue("@journeyEmail");
         var copy1 = Variable.GetValue("@copy1");
-        var id = Now() + Variable.GetValue("@random");
+        var id = Variable.GetValue("@random");
         //prepare data for API call
         var result = retrievetoken();
         var headerNames = ["Authorization"];
