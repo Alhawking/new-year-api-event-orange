@@ -1,9 +1,10 @@
 %%[
     SET @name = QueryParameter('name')
     SET @email = QueryParameter('email')
-    SET @journeyEmail = Iif(QueryParameter('journeyEmail') =='1', 1, 2)
-    SET @record = LookupRows('XMAS2021-2','Email',@email,'Journey_email',@journeyEmail)
-    IF RowCount(@record)==0 THEN 
+    SET @journeyEmail = QueryParameter('journeyEmail')
+    SET @record1 = LookupRows('XMAS2021-2','Email',@email,'Journey_email',1)
+    SET @record2 = LookupRows('XMAS2021-2','Email',@email,'Journey_email',2)
+    IF RowCount(@record1)>=0 AND RowCount(@record2)==0 THEN
         SET @copy1 = True
     ELSE 
         SET @copy1 = False
