@@ -45,11 +45,7 @@
                 "Copy 1":copy1
             }
         };
-        Write(Stringify(jsonBody));
         var resp = HTTP.Post('https://'+tenantId+'.rest.marketingcloudapis.com/interaction/v1/events', "application/json", Stringify(jsonBody), headerNames, headerValues);
-        if(resp.StatusCode == 201) {
-            Write('Evento ejecutado correctamente');
-        }
     } catch (e) {
         Write(Stringify(e));
     }
@@ -74,7 +70,6 @@
             "client_id": Variable.GetValue("@clientId"),
             "client_secret": Variable.GetValue("@clientSecret")
         }
-        Write(Stringify(payload));
         var request = HTTP.Post(config.endpoint,"application/json",Stringify(payload));
         if(request.StatusCode == 200){
             var result = Platform.Function.ParseJSON(request.Response[0]);
