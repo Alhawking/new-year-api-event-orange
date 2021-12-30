@@ -4,9 +4,9 @@
     SET @journeyEmail = QueryParameter('journeyEmail')
     SET @record = LookupRows('XMAS2021-2','Email',@email)
     IF RowCount(@record1)>0 THEN
-        SET @copy1 = True
-    ELSE 
         SET @copy1 = False
+    ELSE 
+        SET @copy1 = True
     ENDIF
     SET @lookUp = LookupRows('APIIntegrations','Nombre',"New Year's Journey")
     SET @rowResult = Row(@lookup,1)
