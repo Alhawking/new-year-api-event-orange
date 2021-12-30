@@ -1,8 +1,8 @@
 %%[
     SET @name = QueryParameter('name')
     SET @email = QueryParameter('email')
-    SET @journeyEmail = QueryParameter('journeyEmail')
-    SET @record = LookupRows('XMAS2021-2','Email',@email)
+    SET @journeyEmail = Iif(QueryParameter('journeyEmail') =='1', 1, 2)
+    SET @record = LookupRows('XMAS2021-2','Email',@email,'Journey_email',@journeyEmail)
     IF RowCount(@record)>0 THEN 
         SET @copy1 = False
     ELSE 
@@ -32,7 +32,7 @@
         var email = Variable.GetValue("@email");
         var journeyEmail = Variable.GetValue("@journeyEmail");
         var copy1 = Variable.GetValue("@copy1");
-        var id = Variable.GetValue("@random");
+        var id = Now() + Variable.GetValue("@random");
         //prepare data for API call
         var result = retrievetoken();
         var headerNames = ["Authorization"];
