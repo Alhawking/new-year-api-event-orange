@@ -2,11 +2,11 @@
     SET @name = QueryParameter('name')
     SET @email = QueryParameter('email')
     SET @journeyEmail = Iif(QueryParameter('journeyEmail') =='1', 1, 2)
-    SET @record = LookupRows('XMAS2021-2','Email',@email,'Journey_email',1)
-    IF RowCount(@record)>0 THEN 
-        SET @copy1 = False
-    ELSE 
+    SET @record = LookupRows('XMAS2021-2','Email',@email,'Journey_email',@journeyEmail)
+    IF RowCount(@record)==0 THEN 
         SET @copy1 = True
+    ELSE 
+        SET @copy1 = False
     ENDIF
     SET @lookUp = LookupRows('APIIntegrations','Nombre',"New Year's Journey")
     SET @rowResult = Row(@lookup,1)
@@ -103,3 +103,4 @@
         return Platform.Function.TreatAsContent(scr);
     }
 </script>
+%%=RowCount(@record)=%%
