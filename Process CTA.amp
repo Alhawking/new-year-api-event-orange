@@ -88,7 +88,7 @@
     function storeToken(result){
         var rows = Platform.Function.UpsertData(
             'APIIntegrations',
-            ["Nombre"],["API Event Aliados"],
+            ["Nombre"],["New Year's Journey"],
             ["Token","ExpirationDate"],[encrypt(result.token),result.expires]
         )
     }
