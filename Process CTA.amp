@@ -16,7 +16,7 @@
     SET @oldToken = Base64Decode(Field(@rowResult,'Token'),'UTF-8')
     SET @expirationDate = Field(@rowResult,'ExpirationDate')
 ]%%
-<<script runat="server">
+<script runat="server">
     Platform.Load("Core","1.1.1");
     var tenantId = Variable.GetValue("@tenantId");
     var config = {
