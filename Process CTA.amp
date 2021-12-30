@@ -15,6 +15,7 @@
     SET @tenantId = Field(@rowResult,'Tenant Id')
     SET @oldToken = Base64Decode(Field(@rowResult,'Token'),'UTF-8')
     SET @expirationDate = Field(@rowResult,'ExpirationDate')
+    SET @random = Random(1,100000)
 ]%%
 <script runat="server">
     Platform.Load("Core","1.1.1");
@@ -29,7 +30,7 @@
         var email = Variable.GetValue("@email");
         var journeyEmail = Variable.GetValue("@journeyEmail");
         var copy1 = Variable.GetValue("@copy1");
-        var id = Now() + Math.random();
+        var id = Now() + Variable.GetValue("@random");
         //prepare data for API call
         var result = retrievetoken();
         var headerNames = ["Authorization"];
