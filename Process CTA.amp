@@ -1,6 +1,6 @@
 %%[
     SET @name = QueryParameter('name')
-    SET @email = AttributeValue('email')
+    SET @email = QueryParameter('email')
     SET @journeyEmail = QueryParameter('journeyEmail')
     SET @record = LookupRows('XMAS2021-2','Email',@email)
     IF RowCount(@record)>0 THEN 
