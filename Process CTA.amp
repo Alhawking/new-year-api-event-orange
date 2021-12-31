@@ -48,7 +48,6 @@
                 "Copy 1":copy1
             }
         };
-        Write(Stringify(jsonBody));
         var resp = HTTP.Post('https://'+tenantId+'.rest.marketingcloudapis.com/interaction/v1/events', "application/json", Stringify(jsonBody), headerNames, headerValues);
     } catch (e) {
         Write(Stringify(e));
@@ -104,6 +103,3 @@
         return Platform.Function.TreatAsContent(scr);
     }
 </script>
-%%=v(@name)=%%
-%%=v(@email)=%%
-%%=v(@journeyEmail)=%%
